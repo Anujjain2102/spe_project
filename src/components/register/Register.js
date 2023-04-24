@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import "./register.css"
 import axios from "axios"
-
+import { useHistory } from "react-router-dom";
 function Register() {
 
+    const history = useHistory();
     const [user, setUser] = useState({
         name: "",
         email: "",
@@ -26,7 +27,8 @@ function Register() {
             {
                 // alert("Nice..")
                 axios.post("http://localhost:9002/register",user)
-                .then(res => console.log(res))
+                .then(res => alert(res))
+                history.replace("/");
             }
             else
             {

@@ -20,11 +20,12 @@ function Login() {
         axios.post("http://localhost:9002/login", user)
         .then(res => {
             alert(res.data.message);
+            setUser(res.data.user);
             if(res.data.user.role === "student"){
-                history.replace("/homepage"); 
+                history.replace('/homepage', {user}); 
             }
             else{
-                history.replace("/securityhome");
+                history.replace('/securityhome', {user});
             }
         })
     }
